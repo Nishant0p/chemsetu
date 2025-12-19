@@ -3,12 +3,12 @@
   "name": "ChemSetu Website",
   "icons": [
     {
-      "src": "chemsetu (1).png",
+      "src": "chemsetu-logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "chemsetu (1).png",
+      "src": "chemsetu-logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

@@ -32,7 +32,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src="/chemsetu (1).png" alt="Chemsetu Logo" className="h-10 md:h-16 w-auto" />
+            <img src="/chemsetu-logo.png" alt="Chemsetu Logo" className="h-10 md:h-16 w-auto" />
           </motion.div>
 
           {/* Navigation Links */}
