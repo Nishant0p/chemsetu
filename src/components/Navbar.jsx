@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="fixed w-full z-50 bg-white shadow-md py-2 transition-all duration-300"
+      className="fixed w-full z-50 bg-white shadow-md py-1 md:py-2 transition-all duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -32,7 +32,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src="/chemsetu (1).png" alt="Chemsetu Logo" className="h-16 w-auto" />
+            <img src="/chemsetu (1).png" alt="Chemsetu Logo" className="h-10 md:h-16 w-auto" />
           </motion.div>
 
           {/* Navigation Links */}
