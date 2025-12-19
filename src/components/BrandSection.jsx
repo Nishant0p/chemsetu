@@ -93,15 +93,6 @@ const LogoMolecule = () => {
     }
   });
 
-  const bubbles = useMemo(() => [
-    { color: "#00A651", speed: 0.15, offset: 0, radius: 2.8 }, 
-    { color: "#2E3192", speed: 0.12, offset: 2, radius: 3.2 },
-    { color: "#00A651", speed: 0.18, offset: 4, radius: 2.5 },
-    { color: "#2E3192", speed: 0.1, offset: 1, radius: 3.0 },
-    { color: "#64ffda", speed: 0.2, offset: 3, radius: 2.2 },
-    { color: "#2E3192", speed: 0.15, offset: 5, radius: 2.7 },
-  ], []);
-
   return (
     <group ref={groupRef}>
       {/* Central Logo Plane */}
@@ -116,29 +107,6 @@ const LogoMolecule = () => {
           depthTest={false}
         />
       </mesh>
-      
-      {/* Bubble Shell */}
-      <mesh position={[0, 0, 0]} renderOrder={2}>
-        <sphereGeometry args={[1.5, 48, 48]} />
-        <meshPhysicalMaterial 
-          color="#ffffff" 
-          transmission={1} 
-          opacity={0.3} 
-          transparent 
-          roughness={0} 
-          metalness={0}
-          thickness={0.1}
-          ior={1.1}
-          clearcoat={1}
-          envMapIntensity={2}
-          side={THREE.FrontSide}
-        />
-      </mesh>
-
-      {/* Dynamic Bubbles */}
-      {bubbles.map((props, idx) => (
-        <DynamicBubble key={idx} {...props} />
-      ))}
     </group>
   );
 };

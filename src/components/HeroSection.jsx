@@ -11,7 +11,7 @@ const HeroSection = () => {
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-0 lg:gap-12 items-center h-full lg:h-auto justify-between lg:justify-center">
           {/* Left side - Text content (50% on mobile) */}
           <motion.div 
-            className="w-full lg:w-[90%] text-left h-[50vh] lg:h-auto flex flex-col justify-center"
+            className="w-full lg:w-[90%] text-left h-[50vh] lg:h-auto flex flex-col justify-center relative z-10"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -64,7 +64,7 @@ const HeroSection = () => {
           
           {/* Right side - Image (50% on mobile) */}
           <motion.div 
-            className="relative h-[50vh] lg:h-[800px] w-full flex items-center justify-center"
+            className="relative h-[50vh] lg:h-[800px] w-full flex items-center justify-center z-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}

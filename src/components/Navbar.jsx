@@ -37,7 +37,7 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {['Services', 'About Us', 'Infrastructure', 'Contact'].map((item) => (
+            {['Services', 'About Us', 'Compounds', 'Contact'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
