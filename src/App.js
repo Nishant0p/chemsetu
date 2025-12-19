@@ -7,6 +7,8 @@ import BrandSection from './components/BrandSection';
 import ServicesGrid from './components/ServicesGrid';
 import InfrastructureTimeline from './components/InfrastructureTimeline';
 import Compounds from './components/Compounds';
+import CompoundDetails from './components/CompoundDetails';
+import Admin from './components/Admin';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
 import './App.css';
@@ -31,6 +33,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/compounds" element={<Compounds />} />
+            <Route path="/compounds/:id" element={<CompoundDetails />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />
