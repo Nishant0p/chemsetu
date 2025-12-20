@@ -1,10 +1,39 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Atom, FlaskConical, Hexagon, Dna } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const FloatingElement = ({ Icon, className, delay, duration = 10 }) => (
+  <motion.div
+    className={`absolute text-blue-500/10 ${className}`}
+    animate={{
+      y: [0, -30, 0],
+      rotate: [0, 360],
+      scale: [1, 1.1, 1],
+    }}
+    transition={{
+      duration: duration,
+      repeat: Infinity,
+      ease: "linear",
+      delay: delay,
+    }}
+  >
+    <Icon strokeWidth={1.5} />
+  </motion.div>
+);
 
 const ContactSection = () => {
   return (
-    <section className="relative py-20 px-4 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full">
+    <section className="relative py-20 px-4 min-h-screen flex items-center overflow-hidden">
+      {/* Floating Background Elements specific to Contact Section */}
+      <div className="absolute inset-0 pointer-events-none">
+        <FloatingElement Icon={Atom} className="top-20 left-10 w-24 h-24" delay={0} duration={20} />
+        <FloatingElement Icon={Hexagon} className="bottom-20 right-10 w-32 h-32" delay={2} duration={25} />
+        <FloatingElement Icon={FlaskConical} className="top-1/2 left-1/4 w-16 h-16" delay={1} duration={18} />
+        <FloatingElement Icon={Dna} className="top-1/3 right-1/4 w-20 h-20" delay={3} duration={22} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/20 rounded-full blur-3xl -z-10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full relative z-10">
         {/* Left Column */}
         <div className="flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight">
