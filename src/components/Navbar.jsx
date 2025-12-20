@@ -40,11 +40,14 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {['Services', 'About Us', 'Compounds', 'Contact'].map((item) => (
-              item === 'Compounds' ? (
+            {['Services', 'About Us', 'Compounds', 'Contact'].map((item) => {
+              const isPage = item === 'Compounds' || item === 'Contact';
+              const path = item === 'Compounds' ? '/compounds' : '/contact';
+              
+              return isPage ? (
                 <Link
                   key={item}
-                  to="/compounds"
+                  to={path}
                   className="text-gray-700 hover:text-primary transition-colors duration-300 text-sm font-bold"
                 >
                   {item}
@@ -58,8 +61,8 @@ const Navbar = () => {
                 >
                   {item}
                 </motion.a>
-              )
-            ))}
+              );
+            })}
             <motion.button 
               className="ml-4 px-6 py-2 rounded-full bg-secondary text-white font-medium text-sm hover:bg-secondary/90 transition-colors shadow-md"
               whileHover={{ scale: 1.05 }}
@@ -131,11 +134,14 @@ const Navbar = () => {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
           >
             <div className="flex flex-col items-center space-y-8">
-              {['Services', 'About Us', 'Compounds', 'Contact'].map((item, index) => (
-                item === 'Compounds' ? (
+              {['Services', 'About Us', 'Compounds', 'Contact'].map((item, index) => {
+                const isPage = item === 'Compounds' || item === 'Contact';
+                const path = item === 'Compounds' ? '/compounds' : '/contact';
+
+                return isPage ? (
                   <Link
                     key={item}
-                    to="/compounds"
+                    to={path}
                     className="text-2xl font-bold text-primary hover:text-secondary transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
@@ -153,8 +159,8 @@ const Navbar = () => {
                   >
                     {item}
                   </motion.a>
-                )
-              ))}
+                );
+              })}
               <motion.button 
                 className="px-8 py-3 rounded-full bg-secondary text-white font-bold text-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
