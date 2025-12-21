@@ -41,8 +41,12 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {['Services', 'About Us', 'Compounds', 'Contact'].map((item) => {
-              const isPage = item === 'Compounds' || item === 'Contact';
-              const path = item === 'Compounds' ? '/compounds' : '/contact';
+              const isPage = ['Compounds', 'Contact', 'About Us', 'Services'].includes(item);
+              let path = '/';
+              if (item === 'Compounds') path = '/compounds';
+              else if (item === 'Contact') path = '/contact';
+              else if (item === 'About Us') path = '/about';
+              else if (item === 'Services') path = '/services';
               
               return isPage ? (
                 <Link
@@ -135,8 +139,12 @@ const Navbar = () => {
           >
             <div className="flex flex-col items-center space-y-8">
               {['Services', 'About Us', 'Compounds', 'Contact'].map((item, index) => {
-                const isPage = item === 'Compounds' || item === 'Contact';
-                const path = item === 'Compounds' ? '/compounds' : '/contact';
+                const isPage = ['Compounds', 'Contact', 'About Us', 'Services'].includes(item);
+                let path = '/';
+                if (item === 'Compounds') path = '/compounds';
+                else if (item === 'Contact') path = '/contact';
+                else if (item === 'About Us') path = '/about';
+                else if (item === 'Services') path = '/services';
 
                 return isPage ? (
                   <Link

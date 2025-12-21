@@ -9,6 +9,10 @@ import InfrastructureTimeline from './components/InfrastructureTimeline';
 import Compounds from './components/Compounds';
 import CompoundDetails from './components/CompoundDetails';
 import ContactSection from './components/ContactSection';
+import AboutUs from './components/AboutUs';
+import Services from './components/Services';
+import TermsPage from './components/TermsPage';
+import PrivacyPage from './components/PrivacyPage';
 import Admin from './components/Admin';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
@@ -38,6 +42,10 @@ function App() {
             <Route path="/compounds" element={<Compounds />} />
             <Route path="/compounds/:id" element={<CompoundDetails />} />
             <Route path="/contact" element={<ContactSection />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
