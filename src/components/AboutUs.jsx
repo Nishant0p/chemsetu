@@ -228,11 +228,6 @@ const AboutUs = () => {
         </div>
       </section>
       
-      {/* Footer Strip */}
-      <footer className="bg-[#050b14] py-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 Chemsetu Lifesciences. All Rights Reserved.</p>
-      </footer>
-
     </div>
   );
 };
