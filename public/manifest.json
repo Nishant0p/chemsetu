@@ -1,6 +1,6 @@
 {
   "short_name": "ChemSetu",
-  "name": "ChemSetu Website",
+  "name": "ChemSetu - API Impurities & Custom Synthesis",
   "icons": [
     {
       "src": "chemsetu-logo.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#2E3192",
+  "theme_color": "#0a192f",
   "background_color": "#ffffff"
 }

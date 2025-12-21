@@ -1,6 +1,7 @@
 {
   "name": "chem-setu-website",
   "version": "0.1.0",
+  "homepage": "https://chemsetu.com",
   "private": true,
   "dependencies": {
     "@prismicio/client": "^7.21.0",
