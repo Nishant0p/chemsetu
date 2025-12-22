@@ -1,8 +1,47 @@
-import React from 'react';
-import { MapPin, Phone, Mail, Send, ArrowRight } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { MapPin, Phone, Mail, Send, ArrowRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import SEO from './SEO';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Replace these with your actual EmailJS Service ID, Template ID, and Public Key
+    // You can get these from https://dashboard.emailjs.com/
+    const SERVICE_ID = 'service_chemsetu'; // Placeholder
+    const TEMPLATE_ID = 'template_contact'; // Placeholder
+    const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Placeholder
+
+    // Simulating API call for now since we don't have real keys
+    // In production, uncomment the emailjs.sendForm block below
+    
+    /*
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+          setSubmitStatus('success');
+          setIsSubmitting(false);
+          form.current.reset();
+      }, (error) => {
+          setSubmitStatus('error');
+          setIsSubmitting(false);
+      });
+    */
+
+    // Temporary simulation for UI demonstration
+    setTimeout(() => {
+      setSubmitStatus('success');
+      setIsSubmitting(false);
+      if (form.current) form.current.reset();
+    }, 1500);
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ChemicalIndustry",
@@ -136,12 +175,28 @@ const ContactSection = () => {
           <div className="relative z-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Send a Message</h2>
             
-            <form className="space-y-5">
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-700">
+                <CheckCircle className="w-5 h-5 shrink-0" />
+                <p className="text-sm font-medium">Message sent successfully! We'll get back to you soon.</p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-700">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p className="text-sm font-medium">Something went wrong. Please try again or email us directly.</p>
+              </div>
+            )}
+            
+            <form ref={form} onSubmit={sendEmail} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">First Name</label>
                   <input 
                     type="text" 
+                    name="user_firstname"
+                    required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     placeholder="John"
                   />
@@ -150,6 +205,8 @@ const ContactSection = () => {
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Last Name</label>
                   <input 
                     type="text" 
+                    name="user_lastname"
+                    required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     placeholder="Doe"
                   />
@@ -160,6 +217,8 @@ const ContactSection = () => {
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                 <input 
                   type="email" 
+                  name="user_email"
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="john@example.com"
                 />
@@ -168,11 +227,11 @@ const ContactSection = () => {
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Interest</label>
                 <div className="relative">
-                    <select className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none">
-                    <option>Custom Synthesis</option>
-                    <option>API Intermediates</option>
-                    <option>Process Development</option>
-                    <option>Other</option>
+                    <select name="interest" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none">
+                    <option value="Custom Synthesis">Custom Synthesis</option>
+                    <option value="API Intermediates">API Intermediates</option>
+                    <option value="Process Development">Process Development</option>
+                    <option value="Other">Other</option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
@@ -183,6 +242,8 @@ const ContactSection = () => {
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
                 <textarea 
+                  name="message"
+                  required
                   rows="4"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="How can we help you?"
@@ -191,10 +252,20 @@ const ContactSection = () => {
 
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98]"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
