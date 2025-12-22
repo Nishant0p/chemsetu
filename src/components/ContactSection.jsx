@@ -1,45 +1,35 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Send, ArrowRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import SEO from './SEO';
-import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
-  const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
-  const sendEmail = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Replace these with your actual EmailJS Service ID, Template ID, and Public Key
-    // You can get these from https://dashboard.emailjs.com/
-    const SERVICE_ID = 'service_chemsetu'; // Placeholder
-    const TEMPLATE_ID = 'template_contact'; // Placeholder
-    const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Placeholder
-
-    // Simulating API call for now since we don't have real keys
-    // In production, uncomment the emailjs.sendForm block below
+    const formData = new FormData(e.target);
     
-    /*
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-      .then((result) => {
-          setSubmitStatus('success');
-          setIsSubmitting(false);
-          form.current.reset();
-      }, (error) => {
-          setSubmitStatus('error');
-          setIsSubmitting(false);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hello@chemsetu.com", {
+        method: "POST",
+        body: formData
       });
-    */
 
-    // Temporary simulation for UI demonstration
-    setTimeout(() => {
-      setSubmitStatus('success');
+      if (response.ok) {
+        setSubmitStatus('success');
+        e.target.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      if (form.current) form.current.reset();
-    }, 1500);
+    }
   };
 
   const localBusinessSchema = {
@@ -188,14 +178,19 @@ const ContactSection = () => {
                 <p className="text-sm font-medium">Something went wrong. Please try again or email us directly.</p>
               </div>
             )}
-            
-            <form ref={form} onSubmit={sendEmail} className="space-y-5">
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Hidden fields for FormSubmit configuration */}
+              <input type="hidden" name="_subject" value="New Contact Form Submission from ChemSetu Website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">First Name</label>
                   <input 
                     type="text" 
-                    name="user_firstname"
+                    name="firstName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     placeholder="John"
@@ -205,7 +200,7 @@ const ContactSection = () => {
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Last Name</label>
                   <input 
                     type="text" 
-                    name="user_lastname"
+                    name="lastName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                     placeholder="Doe"
@@ -217,7 +212,7 @@ const ContactSection = () => {
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                 <input 
                   type="email" 
-                  name="user_email"
+                  name="email"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   placeholder="john@example.com"
