@@ -74,38 +74,62 @@ const services = [
   {
     title: "API Impurities & Intermediates",
     description: "Focus on difficult-to-synthesize molecules and complex impurity standards.",
+<<<<<<< HEAD
     Icon: Icons.Flask,
     bgImage: "https://i.pinimg.com/736x/64/87/5f/64875f222ac7b8cc88ad9ae6b296868c.jpg"
+=======
+    Icon: Icons.Flask
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   },
   {
     title: "Custom Synthesis",
     description: "From mg to 5kg scale. Specializing in NCEs and novel scaffolds.",
+<<<<<<< HEAD
     Icon: Icons.Molecule,
     bgImage: "https://i.pinimg.com/736x/de/0f/6b/de0f6ba1feb44ef48e6695af20a068c6.jpg"
+=======
+    Icon: Icons.Molecule
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   },
   {
     title: "Process Development",
     description: "Cost reduction strategies & seamless Technology Transfer to manufacturing.",
+<<<<<<< HEAD
     Icon: Icons.Gears,
     bgImage: "https://i.pinimg.com/736x/2e/99/db/2e99db086e3146fba1f178ecddc8a260.jpg"
+=======
+    Icon: Icons.Gears
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   },
   {
     title: "Analytical Solutions",
     description: "Isolation & Structural Elucidation of unknown impurities and degradation products.",
+<<<<<<< HEAD
     Icon: Icons.Microscope,
     bgImage: "https://i.pinimg.com/736x/0d/d5/cb/0dd5cbc57fa35af2be574d96d77110bf.jpg"
+=======
+    Icon: Icons.Microscope
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   },
   {
     title: "Complex Reactions",
     description: "Expertise in Cryogenic, High Pressure, and Chiral reaction chemistries.",
+<<<<<<< HEAD
     Icon: Icons.Atom,
     bgImage: "https://i.pinimg.com/736x/85/51/c5/8551c59463487dffc41148c56b5e4e41.jpg"
+=======
+    Icon: Icons.Atom
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   },
   {
     title: "Industrial Training",
     description: "Bridging academic knowledge with practical industrial application.",
+<<<<<<< HEAD
     Icon: Icons.GraduationCap,
     bgImage: "https://i.pinimg.com/736x/1a/13/80/1a1380042278bebb027160ab429ed389.jpg"
+=======
+    Icon: Icons.GraduationCap
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
   }
 ];
 
@@ -124,6 +148,7 @@ const ServicesGrid = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
+<<<<<<< HEAD
               className="relative bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer group hover:shadow-[0_0_20px_rgba(0,166,81,0.3)] transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
               whileHover={{ y: -8 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -146,6 +171,22 @@ const ServicesGrid = () => {
                 {service.description}
               </p>
               <div className="relative z-10 mt-6 w-12 h-1 bg-[#00A651] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+=======
+              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer group hover:shadow-[0_0_20px_rgba(0,166,81,0.3)] transition-shadow duration-300 flex flex-col items-center text-center"
+              whileHover={{ y: -8 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="mb-6 bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center text-[#2E3192] group-hover:bg-[#00A651] group-hover:text-white transition-all duration-300">
+                <service.Icon />
+              </div>
+              <h3 className="text-xl font-bold text-[#2E3192] mb-3 group-hover:text-[#00A651] transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {service.description}
+              </p>
+              <div className="mt-6 w-12 h-1 bg-[#00A651] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+>>>>>>> 912c3186ae76aa10693a29c816be584331650cd0
             </motion.div>
           ))}
         </div>
